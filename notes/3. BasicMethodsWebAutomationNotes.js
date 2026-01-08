@@ -68,6 +68,15 @@
 // locator.last() -> returns the last element matching the locator
 // locator.allTextContents() -> returns an array of text contents of all elements matching the locator
 
+// Static Dropdowns
+// Use locator.selectOption('value') to select an option from a static dropdown
+// Example:
+// await page.locator("#staticDropdown").selectOption("option2");
+// You can also select by label or index
+// await page.locator("#staticDropdown").selectOption({ label: "Option 2" });
+// await page.locator("#staticDropdown").selectOption({ index: 1 });
+// Note: Static dropdowns are implemented using the <select> HTML tag
+
 // Working with Dynamic Dropdowns
 // Use locator.click() to open the dropdown
 // Use locator.locator('optionSelector').click() to select an option from the dropdown
@@ -108,3 +117,11 @@
 // https://playwright.dev/docs/actionability
 // https://playwright.dev/docs/wait-for#waiting-for-network-idle
 // https://playwright.dev/docs/api/class-page#page-wait-for-response
+
+
+//      await expect(adminRadio).toBeChecked(); 
+//                    V/S
+//     expect(await terms.isChecked()).toBeFalsy();
+// await is needed only when action is performed
+// await expect(adminRadio).toBeChecked();  In this action is performed outside expect hence await is needed outside
+// expect(await terms.isChecked()).toBeFalsy(); Here action is performed inside expect hence await is needed inside
