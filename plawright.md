@@ -66,7 +66,7 @@ npm init playwright
     - package-lock.json
     - package.json -> it is created by default for an node project. This where we have info about dependencies of our project
     - playwright.config.js -> it is like a testrunner for entire project
-    - tests and playwright.config.js are the two major files required to develop entire end to end framework ie UI,API,mock responses.
+    - tests and playwright.config.js are the two major files required to develop entire end to end framework ie UI,API,mock responses. To run tests we need this file. This is like configuration file to run tests
 
 # NPM ERROR FOR WINDOWS USER
 ```bash

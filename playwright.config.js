@@ -1,81 +1,34 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './tests',
-  /* Run tests in files in parallel */
-  fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+  testDir: './tests', // Specify the directory where the test files are located
+  timeout: 40 * 1000, // Set global timeout for each test to 40 seconds, this for locators and components
+  expect: {
+    timeout: 40*1000 // Set global expect timeout to 40 seconds for assertions
   },
-
-  /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
-  ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  reporter:'html', // Set HTML reporter to generate test report after test execution
+  use: {
+    browserName: 'chromium', // run in Chrome browser cange to firefox it will run in firefox, this browserName is catcing in test function fixture {browser}
+    headless: false, // Run tests in headless mode. Set to false to see the browser UI.
+  }
 });
 
+// This is like same as above code using commonjs or ES Module syntax
+// const config = ({
+//   testDir: './tests', // Specify the directory where the test files are located
+//   timeout: 40 * 1000, // Set global timeout for each test to 40 seconds, this for locators and components
+//   expect: {
+//     timeout: 40*1000 // Set global expect timeout to 40 seconds for assertions
+//   },
+//   reporter:'html', // Set HTML reporter to generate test report after test execution
+//   use: {
+//     browserName: 'chromium', // Set default browser to Chromium
+//   }
+// });
+// export default config;ES Module OR module.exports = config; in commonjs 
+// So this config JS Object is holding all configuration and after export it is available for whole project
