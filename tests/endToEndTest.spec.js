@@ -1,5 +1,5 @@
 const {test, expect} = require('@playwright/test')
-test.only('End to end test', async({browser}) => {
+test('End to end test', async({browser}) => {
     const emailId = 'pavan@gmail.ocm'
     const productName = 'Automation 8'
     const context = await browser.newContext();
@@ -84,5 +84,4 @@ test.only('End to end test', async({browser}) => {
     const orderIdd = await page.locator('.col-text ').textContent()
     //expect(orderId).toBe(orderIdd)
     expect(orderId.includes(orderIdd)).toBeTruthy()
-    
 })

@@ -164,6 +164,7 @@
 // To run a specific test in a file: npx playwright test tests/UIBasicstest.spec.js -g "Test Name"
 // To run tests in headed mode: npx playwright test --headed
 // To run tests in a specific browser: npx playwright test --project=chromium
+// TO OPEN TEST RUNNER : npx playwright test --ui
 // To generate HTML report after test execution: npx playwright show-report
 
 // Tests in spec file run sequentially by default
