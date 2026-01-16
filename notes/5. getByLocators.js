@@ -42,3 +42,9 @@
 
 // What to use getByLocators or locators(CSS,xpath) totally depends on project
 // choose one to maintain consistency
+
+
+// Where getByLabel works for edit boxes like password
+// when input is inside label
+// when label has for attribute and input is linked to that for
+// then only page.getByLabel().fill() will work
