@@ -24,4 +24,23 @@ test('Playwright special locators ', async({page})=> {
    await page.locator('app-card').filter({hasText:'Nokia Edge'}).getByRole('button').click()
 })
 
+test.only('End to end using getByLocators', async({page}) => {
+    const emailId = 'pavan@gmail.ocm'
+    const productName = 'ADIDAS ORIGINAL'
+    const passsword = 'test@123A'
+    await page.goto('https://rahulshettyacademy.com/client/#/auth/login')
+    await page.getByPlaceholder('email@example.com').fill(emailId)
+    await page.getByPlaceholder('enter your passsword').fill(passsword)
+    // if a tag name in button or class is btn we can getByRole('button')
+    await page.getByRole('button',{name:'Login'}).click()
+    await page.waitForLoadState('networkidle')
+    await page.locator('.card-body b').first().waitFor()
+    // using filter instead of for loop
+    await page.locator('.card-body').filter({hasText:productName}).getByRole('button',{name:'Add To Cart'}).click()
+    // only getByRole('button',{name:'Cart'}) will click on Add To Cart also
+    // hence first listitem i.e li and then search for Cart
+    await page.getByRole('listitem').getByRole('button',{name:'Cart'}).click()
+})
+    
+
 
