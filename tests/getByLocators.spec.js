@@ -24,7 +24,7 @@ test('Playwright special locators ', async({page})=> {
    await page.locator('app-card').filter({hasText:'Nokia Edge'}).getByRole('button').click()
 })
 
-test.only('End to end using getByLocators', async({page}) => {
+test('End to end using getByLocators', async({page}) => {
     const emailId = 'pavan@gmail.ocm'
     const productName = 'ADIDAS ORIGINAL'
     const passsword = 'test@123A'
@@ -40,6 +40,14 @@ test.only('End to end using getByLocators', async({page}) => {
     // only getByRole('button',{name:'Cart'}) will click on Add To Cart also
     // hence first listitem i.e li and then search for Cart
     await page.getByRole('listitem').getByRole('button',{name:'Cart'}).click()
+    await page.locator('div li').first().waitFor()
+    await expect(page.getByText(productName)).toBeVisible()
+    await page.getByRole('button',{name:'Checkout'}).click()
+    await page.getByPlaceholder('Select Country').pressSequentially('ind')
+    // there is british india and  india so we have to use nth(1)
+    await page.getByRole('button',{name:' India'}).nth(1).click()
+    await page.getByText('Place Order ').click()
+    await expect(page.getByText(' Thankyou for the order. ')).toBeVisible()
 })
     
 
