@@ -34,3 +34,4 @@ export default defineConfig({
 // });
 // export default config;ES Module OR module.exports = config; in commonjs 
 // So this config JS Object is holding all configuration and after export it is available for whole project
+// in other tools we have to write code to get logs in playwright no need
