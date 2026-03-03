@@ -26,10 +26,7 @@ test('Login test with PageObject Model',async({page})=>{
     await dashboardPage.searchProduct(productName); // call the searchProduct method to search for the product and add it to the cart
     await dashboardPage.navigateToCart(); // call the navigateToCart method to navigate to the cart page
 
-    await page.pause();
-
     // There is concept called PageObjectManager which will manage all the page objects and we can call the page objects from the page object manager, this will help us to avoid the problem of creating multiple objects of the same class in different test cases, we can create a single object of the class in the page object manager and then we can call that object in our test cases, this will help us to avoid the problem of creating multiple objects of the same class in different test cases and also it will help us to manage all the page objects in a single place
     // In this spec we are creting multiple objects like loginPage,dashbordPage etc 
     // So use PageObjectManager to manage all the page objects and we can call the page objects from the page object manager, this will help us to avoid the problem of creating multiple objects of the same class in different test cases, we can create a single object of the class in the page object manager and then we can call that object in our test cases, this will help us to avoid the problem of creating multiple objects of the same class in different test cases and also it will help us to manage all the page objects in a single place
-
 })

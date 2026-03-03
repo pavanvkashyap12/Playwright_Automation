@@ -8,13 +8,13 @@ class DashboardPage {
     }
 
 
-    async searchProduct(productName) {
+    async searchProductAddCart(productName) {
         const tiltles = await this.productsText.allTextContents();
         console.log('Titles:', tiltles);
         const count = await this.products.count();
-        for(let i=0;i<count;i++){
-            if(await this.products.nth(i).locator('b').textContent() === productName) {
-                await this .products.nth(i).locator('text="Add to Cart"').click(); // text="Add to Cart" is chain locator so did not add in constructor
+        for (let i = 0; i < count; i++) {
+            if (await this.products.nth(i).locator('b').textContent() === productName) {
+                await this.products.nth(i).locator('text="Add to Cart"').click(); // text="Add to Cart" is chain locator so did not add in constructor
                 break;
             }
         }
@@ -24,5 +24,9 @@ class DashboardPage {
         await this.cart.click();
     }
 
-}   
-module.exports = {DashboardPage};
+    async navigateToOrders() {
+        await this.orders.click();
+    }
+
+}
+module.exports = { DashboardPage };
