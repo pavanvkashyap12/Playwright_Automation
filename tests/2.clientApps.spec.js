@@ -1,6 +1,6 @@
 const {test, expect} = require('@playwright/test');
 
-test('Client App Login Test', async ({page}) => {
+test('@UI Client App Login Test', async ({page}) => {
     const userEmail = page.locator("#userEmail");
     const password = page.locator("#userPassword");
     const loginBtn = page.locator('[value="Login"]');
@@ -28,7 +28,7 @@ test('Client App Login Test', async ({page}) => {
     // see below test for reference
 });
 
-test('Client App Login Test with waitFor()', async ({page}) => {
+test('@UI Client App Login Test with waitFor()', async ({page}) => {
     const userEmail = page.locator("#userEmail");
     const password = page.locator("#userPassword");
     const loginBtn = page.locator('[value="Login"]');
@@ -43,7 +43,7 @@ test('Client App Login Test with waitFor()', async ({page}) => {
     console.log(titles);
 });
 
-test('Static and Dnamic Dropdowns, Radio, checkbox ',async({browser})=>{
+test('@UI Static and Dnamic Dropdowns, Radio, checkbox ',async({browser})=>{
     const context = await browser.newContext();
     const page = await context.newPage();
     const staticDropdown = page.locator('select.form-control');
@@ -73,7 +73,7 @@ test('Static and Dnamic Dropdowns, Radio, checkbox ',async({browser})=>{
     expect(await terms.isChecked()).toBeFalsy();
 });
 
-test('Check Attribute Values', async ({page}) => {
+test('@UI Check Attribute Values', async ({page}) => {
     const userEmail = page.locator("#username");
     const password = page.locator("#password");
     const loginBtn = page.locator('#signInBtn');

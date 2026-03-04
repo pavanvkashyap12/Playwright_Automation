@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { PageObjectsManager } = require('../pageObjects/PageObjectsManager');
 
 
-test('Client App login', async ({ page }) => {
+test('@E2E Client App login', async ({ page }) => {
     const poManager = new PageObjectsManager(page);
     //js file- Login js, DashboardPage
     const username = "anshika@gmail.com";

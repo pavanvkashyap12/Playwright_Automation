@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test'
 
-test('First Playwright Test', async ({browser}) => {
+test('@UI First Playwright Test', async ({browser}) => {
     // Create a new browser context
     const context = await browser.newContext(); 
     // Create a new page in the context
@@ -9,7 +9,7 @@ test('First Playwright Test', async ({browser}) => {
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
 });
 
-test('Second Playwright Test', async ({page}) => {
+test('@UI Second Playwright Test', async ({page}) => {
     // Navigate to a webpage
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     console.log(await page.title());
@@ -24,7 +24,7 @@ test('Second Playwright Test', async ({page}) => {
     // });
 });
 
-test('Login Test', async ({page}) => {
+test('@UI Login Test', async ({page}) => {
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
     //await page.locator("#username").type("rahulshettyacademy");
@@ -34,7 +34,7 @@ test('Login Test', async ({page}) => {
     await page.locator('#signInBtn').click();
 });
 
-test('Login Test Failed Click Fill TextContent', async ({page}) => {
+test('@UI Login Test Failed Click Fill TextContent', async ({page}) => {
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
     //await page.locator("#username").type("rahulshettyacademy");
@@ -50,7 +50,7 @@ test('Login Test Failed Click Fill TextContent', async ({page}) => {
     // expect(text).toContain("Incorrect username/password.");
 });
 
-test('Login Test Store locators and Clear and multiple elements', async ({browser}) => {
+test('@UI Login Test Store locators and Clear and multiple elements', async ({browser}) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     // Storing locators in variables sould be done after page is created and before any action is performed 

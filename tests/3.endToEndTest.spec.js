@@ -1,5 +1,5 @@
 const {test, expect} = require('@playwright/test')
-test('End to end test', async({browser}) => {
+test('@E2E End to end test', async({browser}) => {
     const emailId = 'pavan@gmail.ocm'
     const productName = 'Automation 8'
     const context = await browser.newContext();

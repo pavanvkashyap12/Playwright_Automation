@@ -76,7 +76,7 @@ test.beforeAll(async ()=> {
     // use await on playwright methods
 });
 
-test('Get User Details API Test', async ({page}) => {
+test('@API Get User Details API Test', async ({page}) => {
     // we can create a new request context here or use the one created in beforeAll
     console.log('Starting Get User Details API Test');
 

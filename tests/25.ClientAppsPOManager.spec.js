@@ -25,12 +25,6 @@ test('Login test with PageObject Model',async({page})=>{
     const dashboardPage = pageObjectsManager.getDashboardPage(); // call the getDashboardPage method to get the object of DashboardPage class
     await dashboardPage.searchProduct(productName);
     await dashboardPage.navigateToCart();
-    
-
-    
-
-
-    await page.pause();
 
 
 });

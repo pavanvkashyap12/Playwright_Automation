@@ -15,7 +15,7 @@ export default defineConfig({
   use: {
     browserName: 'chromium', // run in Chrome browser cange to firefox it will run in firefox, this browserName is catcing in test function fixture {browser}
     headless: false, // Run tests in headless mode. Set to false to see the browser UI.
-    screenshot: 'on', // Capture screenshot on each test step
+    screenshot: 'on', // Capture screenshot on each test step // off`, `on` or `only-on-failure` are other parameters
     trace: 'retain-on-failure', // on,off are other parameters Collect trace on each test step only for failed tests
   }
 });

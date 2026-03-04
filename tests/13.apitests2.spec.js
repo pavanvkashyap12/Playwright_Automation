@@ -19,7 +19,7 @@ test.beforeAll(async ()=> {
 })
 
 
-test('Place the order API Test', async ({page}) => {
+test('@API Place the order API Test', async ({page}) => {
     // setting token in local storage
     page.addInitScript((value) => {
         window.localStorage.setItem('token', value);
