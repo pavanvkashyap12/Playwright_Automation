@@ -69,3 +69,15 @@ Failures:
 - Now write actual code
 - Now excute feature file 
 - Hooks in cucumber -> create a support folder in features and write hook in this
+- Tags in cucumber -> add tags in feature file right below Feature -> ```npx cucumber-js --tags "@Regression"```
+- Integrate tags and hooks -> ```Before({tags:@tagName},async function() { })``` -> before will run only with tags that have @tagName , 
+- ```Before({tags:@tagName or @tagName},async function() { })``` -> run this if Scenario has any one of these
+- ```Before({tags:@tagName and @tagName},async function() { })``` -> run this if Scenario has both
+
+- Parallel Executions -> Cucumber can only run scenarios in parallel not feature files that is the limitation of cucumber
+- We can have n number of scenarios in one feature file and those scenarios in a feature file can run parallely
+- To run paralley -> ``` npx cucumber-js features/Ecommerce.feature --parallel 10``` -> 10 scenarios run in parallel
+- Generate HTML Report -> ```npx cucumber-js features/Ecommerce.feature --parallel 10 --exit --format html:cucumber-report.html ``` for Json report ````npx cucumber-js features/Ecommerce.feature --parallel 10 --exit --format json:cucumber-report.json```
+- Re-Run failed tests -> ```npx cucumber-js features/Ecommerce.feature --parallel 10 --exit --retry 1 --format html:cucumber-report.html ```
+- in package.json we can add scripts -> Ex: ```"cucmberRegression": "npx cucumber-js --tags '@Regression'"
+ ```

@@ -3,6 +3,7 @@ import { PageObjectsManager } from '../../pageObjects/PageObjectsManager.js'
 import { expect, chromium } from '@playwright/test';
 
 setDefaultTimeout(60 * 1000);// for whole spec //default time out is 5s               // only for Given block timeout
+// Ecommerce.feature
 Given('a login to Ecommerce application with {string} and {string}', {timeout:10*1000}, async function (username, password) {
     // Here given should be same as that in feature file.
     // When "" is used in feature file cucumber considers it as a dynamic and place it in {string}
@@ -11,10 +12,10 @@ Given('a login to Ecommerce application with {string} and {string}', {timeout:10
     // Here browser also does not have context so we have to import playwright from '@playwright/test'
     // with this playwright we can create a browser object and then context and then page
 
-    const browser = await chromium.launch({headless:false}); // add a property headless:false to not run headless
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    this.pageObjectsManager = new PageObjectsManager(page);
+    // const browser = await chromium.launch({headless:false}); // add a property headless:false to not run headless
+    // const context = await browser.newContext();
+    // const page = await context.newPage(); For every test we need this hence keep it in before hook
+    // this.pageObjectsManager = new PageObjectsManager(page);
     const loginPage = this.pageObjectsManager.getLoginPage();
     await loginPage.goToLoginPage();
     await loginPage.login(username,password)
@@ -40,6 +41,23 @@ Then('Verify order present in OrderhistoryPage', async function () {
     const ordersHistoryPage = this.pageObjectsManager.getOrdersHistoryPage();
     await ordersHistoryPage.searchOrderAndSelect(this.orderId);
     expect(this.orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
+})
+
+// ErrorValidations.feature
+Given('a login to Ecommerce2 application with {string} and {string}', async function(username,password) {
+    const userName = this.page.locator('#username')
+    const signIn = this.page.locator('#signInBtn')
+    const pass = this.page.locator('[type="password"]')
+    await this.page.goto("https://rahulshettyacademy.com/loginpagePractise/")
+    console.log('Title----> : ' + await this.page.title())
+    await userName.type(username)
+    await pass.type(password)
+    await signIn.click();
+})
+
+Then('Verify error message is displayed',async function () {
+    console.log(await this.page.locator("[style='block']").textContent())
+    await expect(this.page.locator("[style='block']")).toContainText('Incoorect')
 })
 
 // # WORLD CONSTRUCTOR

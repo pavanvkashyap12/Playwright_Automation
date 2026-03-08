@@ -1,5 +1,5 @@
 Feature: Ecommerce validations
-
+    @E2E
     Scenario: Placing the order
         Given a login to Ecommerce application with "anshika@gmail.com" and "Iamking@000" 
         # "username" and "password" are variables that is used to login 
